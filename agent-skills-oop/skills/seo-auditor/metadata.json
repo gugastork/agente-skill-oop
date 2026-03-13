@@ -1,0 +1,81 @@
+{
+  "name": "seo-auditor",
+  "version": "1.0.0",
+  "type": "utility",
+  "description": "Audita conteúdo contra regras de SEO/GEO e retorna relatório de conformidade com score e sugestões.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["seo", "geo", "audit", "validation", "utility", "analysis"],
+  "dependencies": {
+    "seo-knowledge-base": {
+      "version": "^1.0.0",
+      "load": "full"
+    }
+  },
+  "triggers": [
+    "auditar conteúdo SEO",
+    "verificar conformidade",
+    "analisar texto para SEO",
+    "score de SEO",
+    "avaliar qualidade do conteúdo"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Texto ou HTML a ser auditado"
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "description": "URL para crawling (opcional, requer MCP)"
+      },
+      "focus_areas": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["eeat", "geo", "technical", "readability", "all"]
+        },
+        "default": ["all"],
+        "description": "Áreas específicas para auditar"
+      }
+    },
+    "required": ["content"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "audit_report": {
+        "type": "object",
+        "properties": {
+          "overall_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "grade": {
+            "type": "string",
+            "enum": ["A", "B", "C", "D", "F"]
+          },
+          "summary": { "type": "string" },
+          "categories": { "type": "object" },
+          "priority_fixes": {
+            "type": "array",
+            "items": { "type": "object" }
+          },
+          "base_loaded": { "type": "string" }
+        }
+      }
+    }
+  },
+  "implements": ["analyze", "validate"],
+  "delegates": {
+    "optimize": "geo-optimizer"
+  },
+  "optional_mcp_servers": [
+    "web_fetch",
+    "google_search_console",
+    "lighthouse"
+  ]
+}

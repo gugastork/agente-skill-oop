@@ -1,0 +1,60 @@
+{
+  "name": "seo-knowledge-base",
+  "version": "1.2.0",
+  "type": "abstract",
+  "description": "Fonte de verdade para regras de SEO e GEO. Skill abstrata que define regras sem executar ações.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["seo", "geo", "rules", "abstract", "base", "e-e-a-t"],
+  "triggers": [
+    "quando precisar de regras de SEO",
+    "quando precisar de diretrizes E-E-A-T",
+    "quando precisar de regras GEO",
+    "para validar conformidade de conteúdo"
+  ],
+  "provides": {
+    "sections": {
+      "summary": {
+        "description": "Visão geral das regras (~200 tokens)",
+        "tokens_estimate": 200
+      },
+      "full": {
+        "description": "Detalhes completos de todas as regras",
+        "tokens_estimate": 1500
+      },
+      "full:geo": {
+        "description": "Apenas regras GEO detalhadas",
+        "tokens_estimate": 400
+      },
+      "full:technical": {
+        "description": "Core Web Vitals e checklist técnico",
+        "tokens_estimate": 350
+      }
+    }
+  },
+  "abstract_methods": [
+    {
+      "name": "analyze",
+      "description": "Analisa conteúdo e retorna relatório de conformidade",
+      "input": { "content": "string" },
+      "output": { "type": "ComplianceReport" }
+    },
+    {
+      "name": "optimize",
+      "description": "Otimiza conteúdo segundo as regras definidas",
+      "input": { "content": "string", "level": "string" },
+      "output": { "type": "OptimizedContent" }
+    },
+    {
+      "name": "validate",
+      "description": "Valida conteúdo contra regras específicas",
+      "input": { "content": "string", "rules": "string[]" },
+      "output": { "type": "ValidationResult" }
+    }
+  ],
+  "changelog": [
+    { "version": "1.2.0", "date": "2025-12-20", "changes": "Added [SUMMARY]/[FULL] format, GUARD, INP metric" },
+    { "version": "1.1.0", "date": "2025-12-15", "changes": "Added Core Web Vitals section" },
+    { "version": "1.0.0", "date": "2025-12-10", "changes": "Initial release" }
+  ]
+}

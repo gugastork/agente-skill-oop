@@ -1,0 +1,73 @@
+{
+  "name": "geo-optimizer",
+  "version": "1.0.0",
+  "type": "specialist",
+  "description": "Otimiza conteúdo para visibilidade em AI Search engines usando técnicas de Generative Engine Optimization.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["geo", "optimization", "ai-search", "specialist", "content"],
+  "dependencies": {
+    "seo-knowledge-base": {
+      "version": "^1.0.0",
+      "load": "summary",
+      "optional_sections": ["full:geo", "full"]
+    }
+  },
+  "triggers": [
+    "otimizar conteúdo para IA",
+    "melhorar visibilidade em ChatGPT",
+    "otimizar para Perplexity",
+    "GEO optimization",
+    "otimizar para AI Search"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Texto a ser otimizado"
+      },
+      "optimization_level": {
+        "type": "string",
+        "enum": ["light", "moderate", "aggressive"],
+        "default": "moderate",
+        "description": "Intensidade da otimização"
+      },
+      "preserve_tone": {
+        "type": "boolean",
+        "default": true,
+        "description": "Manter tom original do texto"
+      }
+    },
+    "required": ["content"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "optimized_content": {
+        "type": "string",
+        "description": "Texto otimizado em Markdown"
+      },
+      "changes_made": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Lista de mudanças aplicadas"
+      },
+      "compliance_score": {
+        "type": "object",
+        "properties": {
+          "before": { "type": "number" },
+          "after": { "type": "number" }
+        }
+      },
+      "base_loaded": {
+        "type": "string",
+        "description": "Versão e seção da base carregada"
+      }
+    }
+  },
+  "implements": ["optimize"],
+  "delegates": {
+    "analyze": "seo-auditor"
+  }
+}

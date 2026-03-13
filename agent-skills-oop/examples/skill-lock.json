@@ -1,0 +1,56 @@
+{
+  "$schema": "https://agentskills.io/schemas/lockfile-v1.json",
+  "generated": "2025-12-20T12:00:00Z",
+  "generator": "skill-loader@2.0.0",
+  "root": "content-orchestrator",
+  "resolved": {
+    "content-orchestrator": {
+      "version": "1.0.0",
+      "path": "./skills/content-orchestrator",
+      "integrity": "sha256:a1b2c3d4e5f6",
+      "dependencies": ["seo-knowledge-base", "geo-optimizer", "seo-auditor"],
+      "load_level": "full",
+      "type": "orchestrator"
+    },
+    "geo-optimizer": {
+      "version": "1.0.0",
+      "path": "./skills/geo-optimizer",
+      "integrity": "sha256:b2c3d4e5f6g7",
+      "dependencies": ["seo-knowledge-base"],
+      "load_level": "full",
+      "type": "specialist"
+    },
+    "seo-auditor": {
+      "version": "1.0.0",
+      "path": "./skills/seo-auditor",
+      "integrity": "sha256:c3d4e5f6g7h8",
+      "dependencies": ["seo-knowledge-base"],
+      "load_level": "full",
+      "type": "utility"
+    },
+    "seo-knowledge-base": {
+      "version": "1.2.0",
+      "path": "./skills/seo-knowledge-base",
+      "integrity": "sha256:d4e5f6g7h8i9",
+      "dependencies": [],
+      "load_level": "summary",
+      "type": "abstract"
+    }
+  },
+  "context_budget": {
+    "total_tokens": 4250,
+    "by_skill": {
+      "content-orchestrator:full": 1200,
+      "geo-optimizer:full": 850,
+      "seo-auditor:full": 1400,
+      "seo-knowledge-base:summary": 200,
+      "seo-knowledge-base:full": 600
+    }
+  },
+  "composition_order": [
+    "seo-knowledge-base",
+    "geo-optimizer", 
+    "seo-auditor",
+    "content-orchestrator"
+  ]
+}

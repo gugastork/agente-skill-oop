@@ -1,0 +1,109 @@
+{
+  "name": "content-orchestrator",
+  "version": "1.0.0",
+  "type": "orchestrator",
+  "description": "Orquestra o ciclo completo de criação de conteúdo, coordenando auditoria e otimização SEO/GEO.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["orchestrator", "workflow", "content", "main", "seo", "geo"],
+  "dependencies": {
+    "seo-knowledge-base": {
+      "version": "^1.0.0",
+      "load": "summary"
+    },
+    "geo-optimizer": {
+      "version": "^1.0.0"
+    },
+    "seo-auditor": {
+      "version": "^1.0.0"
+    }
+  },
+  "triggers": [
+    "criar artigo otimizado",
+    "escrever conteúdo SEO",
+    "produzir post para blog",
+    "criar conteúdo completo",
+    "gerar artigo com auditoria"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "topic": {
+        "type": "string",
+        "description": "Assunto principal do conteúdo"
+      },
+      "target_audience": {
+        "type": "string",
+        "description": "Público-alvo (ex: 'CTOs', 'Desenvolvedores')"
+      },
+      "tone": {
+        "type": "string",
+        "enum": ["technical", "conversational", "formal", "casual"],
+        "default": "conversational"
+      },
+      "length": {
+        "type": "string",
+        "enum": ["short", "medium", "long"],
+        "default": "medium",
+        "description": "short: 500w, medium: 1500w, long: 3000w"
+      },
+      "mode": {
+        "type": "string",
+        "enum": ["complete", "audit-only", "optimize-only", "iterative"],
+        "default": "complete"
+      },
+      "existing_content": {
+        "type": "string",
+        "description": "Conteúdo existente para audit/optimize modes"
+      }
+    },
+    "required": ["topic"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "final_content": { "type": "string" },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "word_count": { "type": "number" },
+          "reading_time": { "type": "string" },
+          "target_keywords": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "audit_summary": {
+        "type": "object",
+        "properties": {
+          "initial_score": { "type": "number" },
+          "final_score": { "type": "number" },
+          "improvement": { "type": "string" },
+          "iterations": { "type": "number" }
+        }
+      },
+      "seo_checklist": {
+        "type": "object",
+        "properties": {
+          "meta_title": { "type": "string" },
+          "meta_description": { "type": "string" },
+          "suggested_slug": { "type": "string" }
+        }
+      },
+      "composition_log": { "type": "string" }
+    }
+  },
+  "config": {
+    "max_iterations": 3,
+    "target_score": 80,
+    "auto_optimize": true,
+    "verbose": false
+  },
+  "optional_mcp_servers": [
+    "cms_publisher",
+    "google_search_console",
+    "slack_notifier",
+    "calendar"
+  ]
+}
