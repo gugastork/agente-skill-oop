@@ -1,0 +1,58 @@
+{
+  "name": "financial-rules-base",
+  "version": "1.0.0",
+  "type": "abstract",
+  "description": "VaR, Sharpe Ratio, Modern Portfolio Theory, and compliance rules for financial analysis.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["finance", "risk", "portfolio", "abstract", "base", "var", "sharpe"],
+  "triggers": [
+    "quando precisar de regras financeiras",
+    "quando precisar de métricas de risco",
+    "quando precisar de teoria de portfólio",
+    "para validar conformidade de investimentos"
+  ],
+  "provides": {
+    "sections": {
+      "summary": {
+        "description": "Visão geral das regras (~200 tokens)",
+        "tokens_estimate": 200
+      },
+      "full": {
+        "description": "Risk metrics completas",
+        "tokens_estimate": 1500
+      },
+      "full:portfolio": {
+        "description": "Teoria de portfólio detalhada",
+        "tokens_estimate": 500
+      },
+      "full:compliance": {
+        "description": "Regras de compliance",
+        "tokens_estimate": 350
+      }
+    }
+  },
+  "abstract_methods": [
+    {
+      "name": "analyze_risk",
+      "description": "Analisa métricas de risco do portfólio",
+      "input": { "portfolio": "Portfolio" },
+      "output": { "type": "RiskReport" }
+    },
+    {
+      "name": "optimize_allocation",
+      "description": "Otimiza alocação do portfólio",
+      "input": { "portfolio": "Portfolio", "constraints": "Constraints" },
+      "output": { "type": "OptimalAllocation" }
+    },
+    {
+      "name": "generate_report",
+      "description": "Gera relatório consolidado de investimentos",
+      "input": { "portfolio": "Portfolio" },
+      "output": { "type": "InvestmentReport" }
+    }
+  ],
+  "changelog": [
+    { "version": "1.0.0", "date": "2026-03-13", "changes": "Initial release with VaR, Sharpe, MPT, compliance rules" }
+  ]
+}

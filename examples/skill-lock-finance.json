@@ -1,0 +1,56 @@
+{
+  "$schema": "https://agentskills.io/schemas/lockfile-v1.json",
+  "generated": "2026-03-13T12:00:00Z",
+  "generator": "skill-loader@2.0.0",
+  "root": "investment-orchestrator",
+  "resolved": {
+    "investment-orchestrator": {
+      "version": "1.0.0",
+      "path": "./skills/investment-orchestrator",
+      "integrity": "sha256:e5f6g7h8i9j0",
+      "dependencies": ["financial-rules-base", "risk-analyzer", "portfolio-optimizer"],
+      "load_level": "full",
+      "type": "orchestrator"
+    },
+    "risk-analyzer": {
+      "version": "1.0.0",
+      "path": "./skills/risk-analyzer",
+      "integrity": "sha256:f6g7h8i9j0k1",
+      "dependencies": ["financial-rules-base"],
+      "load_level": "full",
+      "type": "specialist"
+    },
+    "portfolio-optimizer": {
+      "version": "1.0.0",
+      "path": "./skills/portfolio-optimizer",
+      "integrity": "sha256:g7h8i9j0k1l2",
+      "dependencies": ["financial-rules-base"],
+      "load_level": "full",
+      "type": "specialist"
+    },
+    "financial-rules-base": {
+      "version": "1.0.0",
+      "path": "./skills/financial-rules-base",
+      "integrity": "sha256:h8i9j0k1l2m3",
+      "dependencies": [],
+      "load_level": "summary",
+      "type": "abstract"
+    }
+  },
+  "context_budget": {
+    "total_tokens": 3750,
+    "by_skill": {
+      "investment-orchestrator:full": 1290,
+      "risk-analyzer:full": 900,
+      "portfolio-optimizer:full": 850,
+      "financial-rules-base:summary": 200,
+      "financial-rules-base:full": 2350
+    }
+  },
+  "composition_order": [
+    "financial-rules-base",
+    "risk-analyzer",
+    "portfolio-optimizer",
+    "investment-orchestrator"
+  ]
+}

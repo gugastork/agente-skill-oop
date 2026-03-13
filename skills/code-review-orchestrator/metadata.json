@@ -1,0 +1,73 @@
+{
+  "name": "code-review-orchestrator",
+  "version": "1.0.0",
+  "type": "orchestrator",
+  "description": "Orchestrates complete code reviews coordinating security audits and performance optimization.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["orchestrator", "workflow", "code-review", "main"],
+  "dependencies": {
+    "code-standards-base": {
+      "version": "^1.0.0",
+      "load": "summary"
+    },
+    "security-auditor": {
+      "version": "^1.0.0"
+    },
+    "performance-optimizer": {
+      "version": "^1.0.0"
+    }
+  },
+  "triggers": [
+    "fazer code review",
+    "revisar código",
+    "review de segurança e performance",
+    "analisar qualidade do código",
+    "code review completo"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "Código fonte para review"
+      },
+      "language": {
+        "type": "string",
+        "description": "Linguagem de programação"
+      },
+      "focus": {
+        "type": "string",
+        "enum": ["security", "performance", "all"],
+        "default": "all"
+      },
+      "severity_threshold": {
+        "type": "string",
+        "enum": ["Critical", "High", "Medium", "Low"],
+        "default": "Low"
+      }
+    },
+    "required": ["code"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "review_report": {
+        "type": "object",
+        "properties": {
+          "overall_score": { "type": "number" },
+          "grade": { "type": "string" },
+          "security": { "type": "object" },
+          "performance": { "type": "object" },
+          "solid_compliance": { "type": "object" },
+          "priority_actions": { "type": "array" }
+        }
+      }
+    }
+  },
+  "config": {
+    "severity_threshold": "Low",
+    "auto_fix": false,
+    "verbose": false
+  }
+}

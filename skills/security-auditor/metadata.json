@@ -1,0 +1,63 @@
+{
+  "name": "security-auditor",
+  "version": "1.0.0",
+  "type": "specialist",
+  "description": "Detects security vulnerabilities following OWASP Top 10 standards.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["code-review", "security", "specialist", "owasp", "audit"],
+  "dependencies": {
+    "code-standards-base": {
+      "version": "^1.0.0",
+      "load": "summary",
+      "optional_sections": ["full", "full:solid"]
+    }
+  },
+  "triggers": [
+    "auditar segurança do código",
+    "verificar vulnerabilidades OWASP",
+    "security audit",
+    "detectar SQL injection",
+    "analisar segurança"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "Código fonte a ser auditado"
+      },
+      "language": {
+        "type": "string",
+        "description": "Linguagem de programação (auto-detect se omitido)"
+      },
+      "focus_areas": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["injection", "xss", "csrf", "auth", "config", "all"]
+        },
+        "default": ["all"]
+      }
+    },
+    "required": ["code"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "security_report": {
+        "type": "object",
+        "properties": {
+          "overall_risk": { "type": "string" },
+          "vulnerabilities_found": { "type": "number" },
+          "findings": { "type": "array" },
+          "score": { "type": "object" }
+        }
+      }
+    }
+  },
+  "implements": ["audit"],
+  "delegates": {
+    "optimize": "performance-optimizer"
+  }
+}

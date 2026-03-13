@@ -1,0 +1,58 @@
+{
+  "name": "code-standards-base",
+  "version": "1.0.0",
+  "type": "abstract",
+  "description": "OWASP Top 10, SOLID principles, and performance rules for code review.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["code-review", "security", "performance", "abstract", "base", "owasp", "solid"],
+  "triggers": [
+    "quando precisar de regras de code review",
+    "quando precisar de diretrizes OWASP",
+    "quando precisar de princípios SOLID",
+    "para validar conformidade de código"
+  ],
+  "provides": {
+    "sections": {
+      "summary": {
+        "description": "Visão geral das regras (~200 tokens)",
+        "tokens_estimate": 200
+      },
+      "full": {
+        "description": "OWASP Top 10 completo",
+        "tokens_estimate": 1800
+      },
+      "full:solid": {
+        "description": "Princípios SOLID detalhados",
+        "tokens_estimate": 400
+      },
+      "full:performance": {
+        "description": "Regras de performance detalhadas",
+        "tokens_estimate": 400
+      }
+    }
+  },
+  "abstract_methods": [
+    {
+      "name": "audit",
+      "description": "Audita código para vulnerabilidades de segurança",
+      "input": { "code": "string" },
+      "output": { "type": "SecurityReport" }
+    },
+    {
+      "name": "optimize",
+      "description": "Otimiza código para performance",
+      "input": { "code": "string", "focus": "string" },
+      "output": { "type": "OptimizedCode" }
+    },
+    {
+      "name": "review",
+      "description": "Review completo de código",
+      "input": { "code": "string" },
+      "output": { "type": "ReviewReport" }
+    }
+  ],
+  "changelog": [
+    { "version": "1.0.0", "date": "2026-03-13", "changes": "Initial release with OWASP Top 10, SOLID, Performance rules" }
+  ]
+}

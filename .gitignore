@@ -23,6 +23,7 @@ Thumbs.db
 
 # Project specific
 *.log
+*.zip
 output/
 temp/
 .cache/

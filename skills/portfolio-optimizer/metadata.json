@@ -1,0 +1,65 @@
+{
+  "name": "portfolio-optimizer",
+  "version": "1.0.0",
+  "type": "specialist",
+  "description": "Optimizes portfolio allocation using Modern Portfolio Theory and efficient frontier.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["finance", "portfolio", "specialist", "optimization", "markowitz"],
+  "dependencies": {
+    "financial-rules-base": {
+      "version": "^1.0.0",
+      "load": "summary",
+      "optional_sections": ["full:portfolio", "full:compliance"]
+    }
+  },
+  "triggers": [
+    "otimizar portfólio",
+    "rebalancear investimentos",
+    "portfolio optimization",
+    "alocação de ativos",
+    "fronteira eficiente"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "portfolio": {
+        "type": "object",
+        "description": "Composição atual do portfólio"
+      },
+      "constraints": {
+        "type": "object",
+        "description": "Restrições de compliance e preferências",
+        "properties": {
+          "max_single_asset": { "type": "number", "default": 0.10 },
+          "max_single_sector": { "type": "number", "default": 0.25 },
+          "min_liquidity": { "type": "number", "default": 0.05 }
+        }
+      },
+      "risk_tolerance": {
+        "type": "string",
+        "enum": ["conservative", "moderate", "aggressive"],
+        "default": "moderate"
+      }
+    },
+    "required": ["portfolio"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "optimization_report": {
+        "type": "object",
+        "properties": {
+          "summary": { "type": "string" },
+          "current": { "type": "object" },
+          "optimized": { "type": "object" },
+          "compliance_check": { "type": "string" }
+        }
+      }
+    }
+  },
+  "implements": ["optimize_allocation"],
+  "delegates": {
+    "analyze_risk": "risk-analyzer"
+  }
+}

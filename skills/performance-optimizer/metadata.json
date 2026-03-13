@@ -1,0 +1,59 @@
+{
+  "name": "performance-optimizer",
+  "version": "1.0.0",
+  "type": "specialist",
+  "description": "Optimizes code for performance: algorithmic complexity, memory, I/O, and caching.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["code-review", "performance", "specialist", "optimization"],
+  "dependencies": {
+    "code-standards-base": {
+      "version": "^1.0.0",
+      "load": "summary",
+      "optional_sections": ["full:performance", "full:solid"]
+    }
+  },
+  "triggers": [
+    "otimizar performance do código",
+    "melhorar complexidade algorítmica",
+    "performance optimization",
+    "detectar gargalos",
+    "otimizar queries"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "Código fonte a ser otimizado"
+      },
+      "language": {
+        "type": "string",
+        "description": "Linguagem de programação"
+      },
+      "focus": {
+        "type": "string",
+        "enum": ["algorithmic", "memory", "io", "caching", "all"],
+        "default": "all"
+      }
+    },
+    "required": ["code"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "optimization_report": {
+        "type": "object",
+        "properties": {
+          "summary": { "type": "string" },
+          "optimizations": { "type": "array" },
+          "score": { "type": "object" }
+        }
+      }
+    }
+  },
+  "implements": ["optimize"],
+  "delegates": {
+    "audit": "security-auditor"
+  }
+}

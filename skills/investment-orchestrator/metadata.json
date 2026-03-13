@@ -1,0 +1,71 @@
+{
+  "name": "investment-orchestrator",
+  "version": "1.0.0",
+  "type": "orchestrator",
+  "description": "Orchestrates complete investment analysis coordinating risk analysis and portfolio optimization.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["orchestrator", "workflow", "finance", "main"],
+  "dependencies": {
+    "financial-rules-base": {
+      "version": "^1.0.0",
+      "load": "summary"
+    },
+    "risk-analyzer": {
+      "version": "^1.0.0"
+    },
+    "portfolio-optimizer": {
+      "version": "^1.0.0"
+    }
+  },
+  "triggers": [
+    "analisar investimentos",
+    "análise completa de portfólio",
+    "investment analysis",
+    "plano de investimento",
+    "rebalancear portfólio completo"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "portfolio": {
+        "type": "object",
+        "description": "Composição do portfólio"
+      },
+      "risk_tolerance": {
+        "type": "string",
+        "enum": ["conservative", "moderate", "aggressive"],
+        "default": "moderate"
+      },
+      "investment_horizon": {
+        "type": "string",
+        "enum": ["short", "medium", "long"],
+        "default": "medium"
+      },
+      "goals": {
+        "type": "string",
+        "description": "Objetivos financeiros"
+      }
+    },
+    "required": ["portfolio"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "investment_report": {
+        "type": "object",
+        "properties": {
+          "overall_assessment": { "type": "string" },
+          "risk_analysis": { "type": "object" },
+          "optimization": { "type": "object" },
+          "action_plan": { "type": "array" }
+        }
+      }
+    }
+  },
+  "config": {
+    "risk_tolerance": "moderate",
+    "rebalancing_threshold": 0.05,
+    "verbose": false
+  }
+}

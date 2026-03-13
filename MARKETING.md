@@ -1,222 +1,230 @@
-# 📣 Assets de Divulgação - Agent Skills OOP
+# Assets de Divulgacao - Agent Skills OOP v5.0
 
-## LinkedIn Post
+## Campanha em 3 Fases
 
----
-
-**Applying 30+ Years of Software Engineering to AI Agents: OOP for Agent Skills**
-
-Two days ago, Anthropic open-sourced the Agent Skills specification. Yesterday, I published a framework for applying Object-Oriented Programming principles to it.
-
-**The problem:** As AI agents grow more capable, their prompts become monolithic nightmares—thousands of tokens, impossible to maintain, violating every software engineering principle we learned.
-
-**The solution:** Treat Skills as composable objects:
-• Encapsulation (each Skill isolates its knowledge)
-• Composition over inheritance (Skills load other Skills)
-• SOLID principles (Single Responsibility, Open/Closed, etc.)
-• Progressive loading ([SUMMARY] vs [FULL] sections)
-
-**What's in the repo:**
-✅ Full technical paper (v4.0)
-✅ Reference implementation (4 hierarchical Skills)
-✅ Python loader with dependency resolution
-✅ Lockfile spec for reproducibility
-✅ Logging format for debugging
-
-The best part? It works TODAY—no changes to the Agent Skills spec required. Just conventions.
-
-If you're building AI agents and tired of prompt spaghetti, check it out:
-🔗 github.com/gustavostork/agent-skills-oop
-
-#AIAgents #AgentSkills #SoftwareEngineering #OOP #Anthropic #Claude #PromptEngineering #AIArchitecture
+### Fase 1a: O Problema (Degradacao Silenciosa)
 
 ---
 
-## Twitter/X Thread
+**O maior risco dos AI Agents nao e eles falharem. E eles falharem sem voce saber.**
+
+Eu construi um sistema com 7 Agent Skills. Cada uma bem escrita, bem testada, seguindo o guia oficial da Anthropic.
+
+Quando rodavam sozinhas: qualidade impecavel.
+Quando rodavam 5 simultaneamente: a skill mais complexa perdeu todas as suas instrucoes criticas — anotacoes visuais, screenshots, guia de producao. Tudo sumiu.
+
+O output parecia "ok". Nenhum erro. Nenhum warning. Simplesmente... pior.
+
+Isso tem nome: **degradacao silenciosa sob composicao multi-skill**.
+
+E o guia oficial da Anthropic — que eu respeito e uso — nao aborda isso. Ele ensina a fazer skills individuais excelentes. Mas nao ensina o que acontece quando elas competem pelo mesmo contexto.
+
+Este problema vai atingir todo mundo que esta construindo agentes com mais de 2-3 skills em producao.
+
+Na proxima semana, vou compartilhar como resolvi.
+
+#AIAgents #AgentSkills #Anthropic #Claude #PromptEngineering
+
+---
+
+### Fase 1b: Analise do Guia Oficial (32 paginas)
+
+---
+
+**Eu li as 32 paginas do guia oficial da Anthropic sobre Agent Skills. Aqui esta o que ele cobre — e a lacuna que encontrei.**
+
+Em Fev/2026, a Anthropic publicou "The Complete Guide to Building Skills for Claude". E um documento excelente:
+
+O que ele ensina bem:
+- Estrutura de skills (SKILL.md + frontmatter YAML)
+- Progressive Disclosure em 3 niveis
+- Categorias de uso (Document Creation, Workflow Automation, MCP Enhancement)
+- Boas praticas para triggers, instrucoes e exemplos
+
+O que ele nao aborda:
+- O que acontece quando multiplas skills operam simultaneamente
+- Como gerenciar dependencias entre skills
+- Como garantir qualidade quando skills competem por contexto
+- Reprodutibilidade de composicao
+
+A lacuna nao e acidental. O guia e um "Getting Started" — pragmatico, focado em skills individuais.
+
+Mas quem esta construindo sistemas de producao precisa da camada seguinte: **arquitetura para sistemas de skills**.
+
+E sobre isso que trata o paper que lancei esta semana.
+
+#AIAgents #AgentSkills #Anthropic #SoftwareArchitecture
+
+---
+
+### Fase 2: O Framework (Agent Skills OOP)
+
+---
+
+**E se Agent Skills fossem tratadas como classes em OOP?**
+
+Ha 30+ anos, a engenharia de software resolveu o problema de codigo monolitico com Orientacao a Objetos. Agora, AI Agents enfrentam o mesmo problema com prompts monoliticos.
+
+A solucao: aplicar principios OOP e SOLID a Agent Skills.
+
+**Encapsulamento:** Cada skill isola seu conhecimento
+**Composicao:** Skills carregam outras skills sob demanda
+**Abstracao:** Skills base definem contratos (como classes abstratas)
+**SOLID:** Todos os 5 principios se aplicam
+
+Para provar que funciona, implementei em 3 dominios:
+
+| Componente | SEO/GEO | Code Review | Finance |
+|------------|---------|-------------|---------|
+| Base | seo-knowledge-base | code-standards-base | financial-rules-base |
+| Analyzer | seo-auditor | security-auditor | risk-analyzer |
+| Optimizer | geo-optimizer | performance-optimizer | portfolio-optimizer |
+| Orchestrator | content-orchestrator | code-review-orchestrator | investment-orchestrator |
+
+12 skills. 3 dominios. O mesmo padrao arquitetural em todos.
+
+O padrao: **Orchestrator -> Specialists -> Base**
+
+E a melhor parte: funciona hoje, sem mudancas na especificacao Agent Skills.
+
+Paper completo + implementacao de referencia:
+https://github.com/gugastork/agente-skill-oop
+
+#AIAgents #OOP #SOLID #AgentSkills #Anthropic #SoftwareEngineering
+
+---
+
+### Fase 3: Paper Launch
+
+---
+
+**Paper v5.0: "Agent Skills Orientadas a Objetos: Arquitetura Modular para Agentes de IA Escalaveis"**
+
+Depois de 3 meses iterando, lancei a versao 5.0 do paper que propoe tratar Agent Skills como objetos composiveis.
+
+O que tem de novo na v5.0:
+
+1. **Relacao com o guia oficial da Anthropic** — tabela comparativa posicionando o paper como camada complementar
+
+2. **3 dominios de implementacao** (antes era so 1):
+   - SEO/GEO (otimizacao de conteudo)
+   - Code Review (desenvolvimento de software)
+   - Analise Financeira (investimentos)
+
+3. **Case study real** — sistema de 7 skills que sofreu degradacao silenciosa em producao
+
+4. **4 estrategias de reprodutibilidade:**
+   - Lockfiles de skills
+   - Logging estruturado de composicao
+   - Snapshots de contexto
+   - Contract testing
+
+5. **Secoes novas:** dependencias circulares, debugging sem stack traces, padrao cross-domain
+
+O repo inclui:
+- Paper completo (PAPER.md)
+- 12 skills de referencia em 3 dominios
+- Python loader com resolucao de dependencias
+- 3 lockfiles de exemplo
+- Especificacao de logging estruturado
+
+Tudo open source, MIT license:
+https://github.com/gugastork/agente-skill-oop
+
+Se voce esta construindo agentes com multiplas skills, este paper foi escrito para voce.
+
+#AIAgents #AgentSkills #OOP #SOLID #Anthropic #Claude #OpenSource #Paper
+
+---
+
+## Twitter/X Thread (v5.0)
 
 ---
 
 **Tweet 1 (Hook)**
 
-🧵 Anthropic just open-sourced Agent Skills.
+I built a system with 7 Agent Skills. Each one excellent in isolation.
 
-I just published a framework to apply OOP principles to it.
+When 5 ran simultaneously, the most complex skill silently lost all its critical instructions.
 
-Here's how to turn prompt spaghetti into maintainable, composable AI agents:
+No errors. No warnings. Just worse output.
+
+Here's why — and how OOP solves it:
 
 ---
 
 **Tweet 2 (Problem)**
 
-The problem with AI agents today:
+The Anthropic official guide teaches how to build great individual skills.
 
-❌ Monolithic prompts (10k+ tokens)
-❌ Copy-paste of rules everywhere
-❌ No dependency management
-❌ Can't test components in isolation
+But it doesn't address what happens when multiple skills compete for context.
 
-Sound familiar?
+The result: silent degradation. The most instruction-heavy skill pays the price.
 
 ---
 
 **Tweet 3 (Solution)**
 
-The solution: treat Skills like classes.
+The solution: treat Skills like OOP classes.
 
-• Encapsulation → each Skill isolates knowledge
-• Composition → Skills load other Skills
-• Abstraction → base Skills define contracts
-• SOLID → yes, all 5 principles apply
+- Encapsulation: each Skill isolates knowledge
+- Composition: Skills load other Skills on demand
+- Abstraction: base Skills define contracts
+- SOLID: all 5 principles apply
 
----
-
-**Tweet 4 (Progressive Loading)**
-
-Key innovation: Progressive Loading
-
-Instead of loading everything:
-
-```
-[SUMMARY] → ~200 tokens (80% of cases)
-[FULL] → ~2000 tokens (when needed)
-```
-
-Your agent loads what it needs, when it needs it.
+Pattern: Orchestrator -> Specialists -> Base
 
 ---
 
-**Tweet 5 (Architecture)**
+**Tweet 4 (Cross-Domain)**
 
-Reference architecture for SEO/GEO content:
+Proved it works across 3 domains:
 
-```
-content-orchestrator (Main)
-    ├── geo-optimizer (Specialist)
-    ├── seo-auditor (Utility)
-    └── seo-knowledge-base (Abstract)
-```
+SEO/GEO: content-orchestrator -> seo-auditor + geo-optimizer -> seo-knowledge-base
 
-4 Skills. Clear responsibilities. Easy to maintain.
+Code Review: code-review-orchestrator -> security-auditor + performance-optimizer -> code-standards-base
 
----
+Finance: investment-orchestrator -> risk-analyzer + portfolio-optimizer -> financial-rules-base
 
-**Tweet 6 (Lockfile)**
-
-For reproducibility, I propose a lockfile spec:
-
-```json
-{
-  "resolved": {
-    "geo-optimizer": {
-      "version": "1.0.0",
-      "integrity": "sha256:...",
-      "load_level": "summary"
-    }
-  },
-  "total_tokens": 3847
-}
-```
-
-Like package-lock.json, but for AI behavior.
+Same pattern. Different domains.
 
 ---
 
-**Tweet 7 (Call to Action)**
+**Tweet 5 (Case Study)**
 
-The full paper + implementation is on GitHub:
+Real case study in the paper (Section 8):
 
-🔗 github.com/gustavostork/agent-skills-oop
+A Content Engine with 7 skills. Instagram Carousel skill lost:
+- Visual annotations
+- Screenshot suggestions
+- Production guide
+- Number highlights
 
-Includes:
-• Technical paper (v4.0)
-• 4 reference Skills
-• Python loader
-• Lockfile spec
-
-Works TODAY. No spec changes needed.
+All because 5 skills competed for the same context window.
 
 ---
 
-**Tweet 8 (Engagement)**
+**Tweet 6 (What's New in v5.0)**
 
-Questions I'm exploring:
-
-1. Should the official spec support dependencies natively?
-2. How do we handle version conflicts?
-3. Can Skills self-generate from observed workflows?
-
-What would YOU add?
-
----
-
-## GitHub Issue/Discussion Text
+Paper v5.0 includes:
+- Anthropic guide comparison table
+- 3 domain implementations (was 1)
+- Real production case study
+- 4 reproducibility strategies
+- Lockfile + logging specs
+- 12 reference skills
 
 ---
 
-**Title:** [Proposal] OOP-inspired conventions for hierarchical Skills composition
+**Tweet 7 (CTA)**
 
-**Body:**
+Full paper + 12 reference skills + Python loader:
 
-### Summary
+https://github.com/gugastork/agente-skill-oop
 
-Following the release of Agent Skills as an open standard, I've been exploring how to apply established software engineering patterns to the Skill ecosystem. The result is a set of conventions for creating hierarchical, composable Skills using OOP principles.
+MIT license. Works today. No spec changes needed.
 
-### The Problem
-
-As Skills libraries grow, we're seeing patterns that violate software engineering best practices:
-- Duplicated rules across multiple Skills (violates DRY)
-- No clear dependency relationships
-- Difficulty testing Skills in isolation
-- Context window bloat from loading full Skills when partial context suffices
-
-### Proposed Conventions
-
-1. **Skill Types**: Mark Skills with `type: abstract | specialist | utility | orchestrator`
-
-2. **Progressive Loading**: Structure Skills with `[SUMMARY]` and `[FULL]` sections
-   ```markdown
-   ## [SUMMARY]
-   ~200 tokens for common cases
-   
-   ## [FULL]
-   Complete details when needed
-   ```
-
-3. **Dependency Declaration**: Extended metadata format
-   ```json
-   "dependencies": {
-     "base-skill": {
-       "version": "^1.0.0",
-       "load": "summary"
-     }
-   }
-   ```
-
-4. **Guards for Abstract Skills**: Prevent direct invocation
-   ```markdown
-   ## GUARD
-   If invoked directly, respond: "Use [concrete-skill] instead."
-   ```
-
-5. **Lockfiles**: For reproducibility in production
-
-### Reference Implementation
-
-I've created a full implementation with:
-- 4 hierarchical Skills (SEO/GEO domain)
-- Python loader with dependency resolution
-- Lockfile generation
-- Structured logging
-
-**Repo:** github.com/gustavostork/agent-skills-oop
-
-### Questions for Discussion
-
-1. Should any of these conventions be formalized in the spec?
-2. Is there interest in a standard loader/resolver?
-3. How should version conflicts be handled?
-
-Would love feedback from the community and maintainers.
+If you're building agents with 3+ skills, this is for you.
 
 ---
 
@@ -229,7 +237,7 @@ Would love feedback from the community and maintainers.
 #OOP #SOLID #SoftwareArchitecture #PromptEngineering
 
 **Broader:**
-#AI #MachineLearning #LLM #GenerativeAI #TechTwitter
+#AI #MachineLearning #LLM #GenerativeAI
 
-**Portuguese (for BR audience):**
-#InteligenciaArtificial #DesenvolvimentoDeSoftware #Programacao
+**Portuguese (BR audience):**
+#InteligenciaArtificial #DesenvolvimentoDeSoftware #IAGenerativa

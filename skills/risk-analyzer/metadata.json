@@ -1,0 +1,64 @@
+{
+  "name": "risk-analyzer",
+  "version": "1.0.0",
+  "type": "specialist",
+  "description": "Calculates portfolio risk metrics: VaR, Beta, Sharpe Ratio, Maximum Drawdown.",
+  "author": "Gustavo Stork",
+  "license": "MIT",
+  "tags": ["finance", "risk", "specialist", "analysis", "var", "sharpe"],
+  "dependencies": {
+    "financial-rules-base": {
+      "version": "^1.0.0",
+      "load": "summary",
+      "optional_sections": ["full", "full:compliance"]
+    }
+  },
+  "triggers": [
+    "analisar risco do portfólio",
+    "calcular VaR",
+    "calcular Sharpe Ratio",
+    "avaliar risco de investimento",
+    "risk analysis"
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "portfolio": {
+        "type": "object",
+        "description": "Composição do portfólio com ativos e pesos",
+        "properties": {
+          "assets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ticker": { "type": "string" },
+                "weight": { "type": "number" },
+                "value": { "type": "number" }
+              }
+            }
+          },
+          "total_value": { "type": "number" }
+        }
+      }
+    },
+    "required": ["portfolio"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "risk_report": {
+        "type": "object",
+        "properties": {
+          "risk_level": { "type": "string" },
+          "metrics": { "type": "object" },
+          "alerts": { "type": "array" }
+        }
+      }
+    }
+  },
+  "implements": ["analyze_risk"],
+  "delegates": {
+    "optimize_allocation": "portfolio-optimizer"
+  }
+}
