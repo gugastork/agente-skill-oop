@@ -846,6 +846,8 @@ Os desafios de custo de contexto, resolução de dependências e reprodutibilida
 
 Esta proposta não requer alterações na especificação Agent Skills — é uma convenção de design e conjunto de práticas que funcionam com o padrão atual, posicionando-se como extensão natural do guia oficial. Esperamos que a comunidade expanda essas ideias e contribua para um ecossistema de Skills verdadeiramente modular.
 
+O repositório que acompanha este paper inclui um **modo de demonstração** (`--demo`) que executa os três orchestrators com dados de exemplo. A resolução de dependências, composição de contexto e logging estruturado são reais — permitindo verificar em segundos que a arquitetura proposta funciona como descrito, sem necessidade de API keys ou dependências externas. Um modo de execução via API (`--run`) também está disponível para validação com modelos reais.
+
 ---
 
 ## Referências
