@@ -1,0 +1,72 @@
+{
+  "portfolio": {
+    "name": "Tech Growth Portfolio",
+    "total_value": 500000,
+    "currency": "USD",
+    "risk_tolerance": "moderate",
+    "investment_horizon": "long",
+    "assets": [
+      {
+        "symbol": "AAPL",
+        "name": "Apple Inc.",
+        "sector": "Technology",
+        "allocation_pct": 35.0,
+        "value": 175000,
+        "annual_return_pct": 12.5,
+        "volatility_pct": 22.3
+      },
+      {
+        "symbol": "MSFT",
+        "name": "Microsoft Corp.",
+        "sector": "Technology",
+        "allocation_pct": 25.0,
+        "value": 125000,
+        "annual_return_pct": 15.2,
+        "volatility_pct": 20.1
+      },
+      {
+        "symbol": "GOOGL",
+        "name": "Alphabet Inc.",
+        "sector": "Technology",
+        "allocation_pct": 20.0,
+        "value": 100000,
+        "annual_return_pct": 10.8,
+        "volatility_pct": 24.5
+      },
+      {
+        "symbol": "AMZN",
+        "name": "Amazon.com Inc.",
+        "sector": "Technology",
+        "allocation_pct": 10.0,
+        "value": 50000,
+        "annual_return_pct": 8.3,
+        "volatility_pct": 28.7
+      },
+      {
+        "symbol": "BND",
+        "name": "Vanguard Total Bond Market ETF",
+        "sector": "Fixed Income",
+        "allocation_pct": 5.0,
+        "value": 25000,
+        "annual_return_pct": 3.1,
+        "volatility_pct": 5.2
+      },
+      {
+        "symbol": "VNQ",
+        "name": "Vanguard Real Estate ETF",
+        "sector": "Real Estate",
+        "allocation_pct": 5.0,
+        "value": 25000,
+        "annual_return_pct": 6.4,
+        "volatility_pct": 18.9
+      }
+    ]
+  },
+  "issues": {
+    "concentration_risk": "90% in Technology sector",
+    "single_stock_risk": "AAPL at 35% exceeds 10% recommended maximum",
+    "low_diversification": "Only 6 assets, 4 in same sector",
+    "fixed_income_underweight": "5% bonds vs 20-40% recommended for moderate risk",
+    "no_international_exposure": "100% US equities"
+  }
+}

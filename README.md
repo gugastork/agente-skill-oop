@@ -67,6 +67,50 @@ python loader.py content-orchestrator --compose --output context.md
 python loader.py --validate
 ```
 
+## See It In Action
+
+The loader includes a `--demo` mode that runs end-to-end demonstrations using real dependency resolution with sample data — no API keys or external dependencies required.
+
+```bash
+# Code Review: finds OWASP vulns + performance issues in sample code
+python loader.py code-review-orchestrator --demo
+
+# Content: audits and optimizes a weak SEO article
+python loader.py content-orchestrator --demo
+
+# Investment: analyzes a concentrated portfolio and suggests rebalancing
+python loader.py investment-orchestrator --demo
+```
+
+Each demo uses **real `compose_context()`** for genuine dependency resolution, then simulates specialist processing with findings that match each skill's defined OUTPUT FORMAT.
+
+### Run with Claude API (optional)
+
+If you have the Anthropic SDK installed, you can run skills against real input:
+
+```bash
+pip install anthropic
+export ANTHROPIC_API_KEY=sk-...
+
+# Run code review on any file
+python loader.py code-review-orchestrator --run --input examples/samples/vulnerable_app.py
+
+# Run with a specific model
+python loader.py code-review-orchestrator --run --input mycode.py --model claude-opus-4-20250514
+```
+
+### Clean System Prompt
+
+Generate a ready-to-use system prompt with `--clean`:
+
+```bash
+# Outputs a clean system prompt (no frontmatter, with section delimiters)
+python loader.py code-review-orchestrator --compose --clean
+
+# Save to file
+python loader.py content-orchestrator --compose --clean --output system-prompt.md
+```
+
 ## Repository Structure
 
 ```
